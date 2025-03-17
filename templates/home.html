@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        form { width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; }
+        input, select { width: 100%; padding: 8px; margin: 5px 0; }
+        button { background-color: blue; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background-color: darkblue; }
+    </style>
+</head>
+<body>
+    <h2>Heart Disease Prediction</h2>
+
+    <form action="/predict" method="post">
+        <label>Age:</label>
+        <input type="number" name="Age" required>
+
+        <label>Sex:</label>
+        <select name="Sex">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select>
+
+        <label>Chest Pain Type:</label>
+        <select name="ChestPainType">
+            <option value="0">Typical Angina</option>
+            <option value="1">Atypical Angina</option>
+            <option value="2">Non-Anginal Pain</option>
+            <option value="3">Asymptomatic</option>
+        </select>
+
+        <label>Resting BP:</label>
+        <input type="number" name="RestingBP" required>
+
+        <label>Cholesterol:</label>
+        <input type="number" name="Cholesterol" required>
+
+        <label>Fasting Blood Sugar (FastingBS):</label>
+        <select name="FastingBS">
+            <option value="0">Less than 120 mg/dl</option>
+            <option value="1">Greater than 120 mg/dl</option>
+        </select>
+
+        <label>Resting ECG:</label>
+        <select name="RestingECG">
+            <option value="0">Normal</option>
+            <option value="1">ST-T Wave Abnormality</option>
+            <option value="2">Left Ventricular Hypertrophy</option>
+        </select>
+
+        <label>Max Heart Rate:</label>
+        <input type="number" name="MaxHR" required>
+
+        <label>Exercise Induced Angina:</label>
+        <select name="ExerciseAngina">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label>Oldpeak (ST Depression):</label>
+        <input type="number" step="0.1" name="Oldpeak" required>
+
+        <label>ST Slope:</label>
+        <select name="ST_Slope">
+            <option value="0">Down</option>
+            <option value="1">Flat</option>
+            <option value="2">Up</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <!-- Display Prediction Result -->
+    {% if prediction_text %}
+    <h3 style="color: green;">{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
