@@ -3,80 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart Disease Prediction</title>
+    <title>Heart Failure Predictor</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        form { width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; }
-        input, select { width: 100%; padding: 8px; margin: 5px 0; }
-        button { background-color: blue; color: white; padding: 10px; border: none; cursor: pointer; }
-        button:hover { background-color: darkblue; }
+        /* Import Futuristic Font for Heading */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Raleway:wght@300;400;600&display=swap');
+
+        /* Red-Green Gradient Background */
+        body {
+            font-family: 'Raleway', sans-serif; /* Default Font */
+            background: linear-gradient(135deg, #8B0000, #228B22);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Centered Logo */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Heading with Futuristic Font */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #8B0000;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        /* Subheading */
+        .subheading {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        label {
+            font-family: 'Raleway', sans-serif;
+            font-weight: bold;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        input, select {
+            font-family: 'Raleway', sans-serif;
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 13px;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        select {
+            appearance: none;
+            text-align-last: center;
+        }
+
+        button {
+            font-family: 'Raleway', sans-serif;
+            width: 100%;
+            background: #8B0000;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #600000;
+        }
+
+        /* Animated Prediction */
+        .prediction {
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #8B0000;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            font-size: 12px;
+            color: #8B0000;
+        }
     </style>
 </head>
 <body>
-    <h2>Heart Disease Prediction</h2>
 
-    <form action="/predict" method="post">
-        <label>Age:</label>
-        <input type="number" name="Age" required>
+    <div class="container">
+        <!-- Heart Logo Centered -->
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#8B0000" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </div>
 
-        <label>Sex:</label>
-        <select name="Sex">
-            <option value="0">Female</option>
-            <option value="1">Male</option>
-        </select>
+        <h1>Heart Failure Predictor</h1>
+        <p class="subheading">ML Model Prototype by Febin Francis</p>
 
-        <label>Chest Pain Type:</label>
-        <select name="ChestPainType">
-            <option value="0">Typical Angina</option>
-            <option value="1">Atypical Angina</option>
-            <option value="2">Non-Anginal Pain</option>
-            <option value="3">Asymptomatic</option>
-        </select>
+        <form action="/predict" method="post">
+            <label>Age:</label>
+            <input type="number" name="Age" required>
 
-        <label>Resting BP:</label>
-        <input type="number" name="RestingBP" required>
+            <label>Sex:</label>
+            <select name="Sex">
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
 
-        <label>Cholesterol:</label>
-        <input type="number" name="Cholesterol" required>
+            <label>Chest Pain Type:</label>
+            <select name="ChestPainType">
+                <option value="0">Typical Angina</option>
+                <option value="1">Atypical Angina</option>
+                <option value="2">Non-Anginal Pain</option>
+                <option value="3">Asymptomatic</option>
+            </select>
 
-        <label>Fasting Blood Sugar (FastingBS):</label>
-        <select name="FastingBS">
-            <option value="0">Less than 120 mg/dl</option>
-            <option value="1">Greater than 120 mg/dl</option>
-        </select>
+            <label>Resting BP:</label>
+            <input type="number" name="RestingBP" required>
 
-        <label>Resting ECG:</label>
-        <select name="RestingECG">
-            <option value="0">Normal</option>
-            <option value="1">ST-T Wave Abnormality</option>
-            <option value="2">Left Ventricular Hypertrophy</option>
-        </select>
+            <label>Cholesterol:</label>
+            <input type="number" name="Cholesterol" required>
 
-        <label>Max Heart Rate:</label>
-        <input type="number" name="MaxHR" required>
+            <label>Fasting Blood Sugar (FastingBS):</label>
+            <select name="FastingBS">
+                <option value="0">Less than 120 mg/dl</option>
+                <option value="1">Greater than 120 mg/dl</option>
+            </select>
 
-        <label>Exercise Induced Angina:</label>
-        <select name="ExerciseAngina">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </select>
+            <label>Resting ECG:</label>
+            <select name="RestingECG">
+                <option value="0">Normal</option>
+                <option value="1">ST-T Wave Abnormality</option>
+                <option value="2">Left Ventricular Hypertrophy</option>
+            </select>
 
-        <label>Oldpeak (ST Depression):</label>
-        <input type="number" step="0.1" name="Oldpeak" required>
+            <label>Max Heart Rate:</label>
+            <input type="number" name="MaxHR" required>
 
-        <label>ST Slope:</label>
-        <select name="ST_Slope">
-            <option value="0">Down</option>
-            <option value="1">Flat</option>
-            <option value="2">Up</option>
-        </select>
+            <label>Exercise Induced Angina:</label>
+            <select name="ExerciseAngina">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
 
-        <button type="submit">Predict</button>
-    </form>
+            <label>Oldpeak (ST Depression):</label>
+            <input type="number" step="0.1" name="Oldpeak" required>
 
-    <!-- Display Prediction Result -->
-    {% if prediction_text %}
-    <h3 style="color: green;">{{ prediction_text }}</h3>
-    {% endif %}
+            <label>ST Slope:</label>
+            <select name="ST_Slope">
+                <option value="0">Down</option>
+                <option value="1">Flat</option>
+                <option value="2">Up</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+
+        <p class="disclaimer">⚠ Disclaimer: Predictions are not 100% accurate and should not be used for medical diagnosis.</p>
+    </div>
+
 </body>
 </html>
