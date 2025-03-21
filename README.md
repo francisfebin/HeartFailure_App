@@ -57,7 +57,7 @@ Special thanks to these amazing resources that helped me in building this projec
 
 ## 📜 License
 
-This project is licensed under the **[Your License Name]**.
+This project is licensed under the **MIT License**.
 
 ---
 
