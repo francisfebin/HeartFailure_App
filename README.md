@@ -1,72 +1,64 @@
+# ❤️ Heart Failure Predictor
 
-📌 Heart Failure Predictor 🫀🔍
-Machine Learning Model Prototype by Febin Francis
+🚀 A Machine Learning-based web application to predict the risk of heart failure based on medical data.
 
+![App Screenshot](Heart_Failure_Predictor.png)
 
+## 🌟 About the Project
 
+This project uses **Random Forest Classifier** to predict heart failure risk. The app is deployed on **Render** and accessible at:  
+🔗 [Heart Failure Predictor](https://heart-failure-predictor-wrnv.onrender.com)
 
-📝 About
-The Heart Failure Predictor is a machine learning-powered web app that predicts the likelihood of heart failure based on medical parameters. This is a prototype aimed at showcasing predictive modeling in healthcare. 🚑💡
+### 🔮 Future Plans
+I plan to implement more models like **Logistic Regression** and **Neural Networks** to improve accuracy and performance.
 
-💡 Disclaimer: This is for educational purposes only and not a substitute for professional medical advice!
+## ⚙ Features
 
-🌐 Live Demo
-🚀 Try it out here: 👉 Heart Failure Predictor
+✅ User-friendly web interface  
+✅ Input medical parameters for prediction  
+✅ Machine Learning-powered predictions  
+✅ Secure deployment on Render  
 
-🏗 Tech Stack
-🐍 Python (Flask)
-🌲 Random Forest Classifier (Current ML Model)
-📊 Scikit-Learn (Machine Learning Framework)
-🎨 HTML, CSS (Frontend)
-🌐 Render (Deployment)
-🔮 Future Enhancements
-🚀 To improve accuracy and robustness, I plan to experiment with:
-✅ Logistic Regression (For baseline comparison)
-✅ Neural Networks (Deep learning for better predictions)
-✅ Hyperparameter Tuning (For model optimization)
+## 🛠️ Technologies Used
 
-Stay tuned for updates! ✨
+- **Python**
+- **Flask**
+- **Scikit-learn**
+- **Pandas & NumPy**
+- **Render (for deployment)**  
+- **HTML, CSS (for UI)**
 
-🖥 UI Preview
-📸 Screenshot of the Web App:
+## 🚀 Getting Started
 
+### 🔧 Installation
 
-⚙️ How to Run Locally
-bash
-Copy
-Edit
-# Clone the repo
+Clone the repository and install dependencies:
+
+```bash
 git clone https://github.com/francisfebin/HeartFailure_App.git
-
-# Navigate to the project directory
 cd HeartFailure_App
-
-# Install dependencies
 pip install -r requirements.txt
+```
 
-# Run the application
+### ▶️ Running Locally
+
+```bash
 python app.py
-👉 The app will be available at http://127.0.0.1:5000
+```
 
-📚 Acknowledgments
-This project was made possible with insights and support from the following resources:
+## 🤝 Acknowledgments
 
-💡 AI Assistance:
+Special thanks to these amazing resources that helped me in building this project:
 
-ChatGPT 🤖
-DeepSeek AI
-🎥 Video Tutorials:
+- ChatGPT  
+- Deepseek  
+- [Machine Learning Flask Deployment Tutorial](https://www.youtube.com/watch?v=I4Xg2cdvGzU&list=PLuJMPyH4NjJM2icpdAcjDRmDGi8I_X7rE&index=3)  
+- [Heart Disease Prediction Video](https://youtu.be/WuEGXlokpuQ?si=Dp8Hf7aUD82XNTz6)
 
-YouTube Tutorial on Flask Deployment
-Machine Learning Model Training Guide
-🙌 Special thanks to the amazing open-source community!
+## 📜 License
 
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the **[Your License Name]**.
 
-📬 Contributing
-🙌 Contributions are welcome! If you have suggestions, feel free to fork the repo and submit a pull request.
+---
 
-📌 Author: Febin Francis
-
-🚀 Happy Coding! 💻✨
+💡 *Contributions and suggestions are always welcome!* 🎉
