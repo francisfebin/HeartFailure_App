@@ -20,7 +20,7 @@
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 600px; /* Adjusted width */
             background: rgba(255, 255, 255, 0.98);
             padding: 20px;
             border-radius: 12px;
@@ -28,9 +28,7 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
-            height: auto;
-            max-height: 90vh;
+            align-items: center;
             box-sizing: border-box;
             overflow: hidden;
         }
@@ -38,6 +36,7 @@
         .logo-container {
             display: flex;
             justify-content: center;
+            margin-bottom: 10px;
         }
 
         .logo {
@@ -63,24 +62,35 @@
         .subheading {
             font-size: 13px;
             color: #7f8c8d;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-style: italic;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column by default */
+            gap: 10px; /* Spacing between fields */
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         label {
             font-weight: bold;
-            text-align: left;
-            font-size: 14px;
-            display: block;
+            font-size: 13px; /* Smaller font size */
+            margin-bottom: 5px;
         }
 
         input, select {
             width: 100%;
             padding: 8px;
-            margin-top: 4px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 13px;
+            font-size: 13px; /* Smaller font size */
             background-color: #f2f2f2;
             text-align: center;
             box-sizing: border-box;
@@ -96,7 +106,7 @@
             font-size: 15px;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         button:hover {
@@ -104,7 +114,7 @@
         }
 
         .prediction {
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 15px;
             font-weight: bold;
             color: #8B0000;
@@ -125,10 +135,33 @@
         }
 
         .disclaimer {
-            font-size: 12px;
+            font-size: 11px; /* Smaller font size */
             color: #8B0000;
             word-wrap: break-word;
-            margin-top: auto;
+            margin-top: 15px;
+        }
+
+        /* Media query for 2-column layout on larger screens */
+        @media (min-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr; /* 2-column layout */
+            }
+            .form-group:nth-child(odd) {
+                grid-column: 1; /* Place odd fields in the first column */
+            }
+            .form-group:nth-child(even) {
+                grid-column: 2; /* Place even fields in the second column */
+            }
+            /* Center the last field (ST_Slope) */
+            .form-group:last-child {
+                grid-column: 1 / -1; /* Span across all columns */
+                display: flex;
+                align-items: center; /* Center align the field */
+                justify-content: center; /* Center horizontally */
+            }
+            button, .prediction, .disclaimer {
+                grid-column: span 2; /* Span both columns */
+            }
         }
     </style>
 </head>
@@ -145,62 +178,75 @@
         <p class="subheading">ML Model Prototype by Febin Francis</p>
 
         <form action="/predict" method="post">
-            <label>Age:</label>
-            <input type="number" name="Age" required>
-
-            <label>Sex:</label>
-            <select name="Sex">
-                <option value="0">Female</option>
-                <option value="1">Male</option>
-            </select>
-
-            <label>Chest Pain Type:</label>
-            <select name="ChestPainType">
-                <option value="0">Typical Angina</option>
-                <option value="1">Atypical Angina</option>
-                <option value="2">Non-Anginal Pain</option>
-                <option value="3">Asymptomatic</option>
-            </select>
-
-            <label>Resting BP:</label>
-            <input type="number" name="RestingBP" required>
-
-            <label>Cholesterol:</label>
-            <input type="number" name="Cholesterol" required>
-
-            <label>Fasting Blood Sugar:</label>
-            <select name="FastingBS">
-                <option value="0">Less than 120 mg/dl</option>
-                <option value="1">Greater than 120 mg/dl</option>
-            </select>
-
-            <label>Resting ECG:</label>
-            <select name="RestingECG">
-                <option value="0">Normal</option>
-                <option value="1">ST-T Wave Abnormality</option>
-                <option value="2">Left Ventricular Hypertrophy</option>
-            </select>
-
-            <label>Max Heart Rate:</label>
-            <input type="number" name="MaxHR" required>
-
-            <label>Exercise Induced Angina:</label>
-            <select name="ExerciseAngina">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
-
-            <label>Oldpeak (ST Depression):</label>
-            <input type="number" step="0.1" name="Oldpeak" required>
-
-            <label>ST Slope:</label>
-            <select name="ST_Slope">
-                <option value="0">Down</option>
-                <option value="1">Flat</option>
-                <option value="2">Up</option>
-            </select>
-
-            <button type="submit">Predict</button>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" name="Age" required>
+                </div>
+                <div class="form-group">
+                    <label>Sex:</label>
+                    <select name="Sex">
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Chest Pain Type:</label>
+                    <select name="ChestPainType">
+                        <option value="0">Typical Angina</option>
+                        <option value="1">Atypical Angina</option>
+                        <option value="2">Non-Anginal Pain</option>
+                        <option value="3">Asymptomatic</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Resting BP:</label>
+                    <input type="number" name="RestingBP" required>
+                </div>
+                <div class="form-group">
+                    <label>Cholesterol:</label>
+                    <input type="number" name="Cholesterol" required>
+                </div>
+                <div class="form-group">
+                    <label>Fasting Blood Sugar:</label>
+                    <select name="FastingBS">
+                        <option value="0">Less than 120 mg/dl</option>
+                        <option value="1">Greater than 120 mg/dl</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Resting ECG:</label>
+                    <select name="RestingECG">
+                        <option value="0">Normal</option>
+                        <option value="1">ST-T Wave Abnormality</option>
+                        <option value="2">Left Ventricular Hypertrophy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Max Heart Rate:</label>
+                    <input type="number" name="MaxHR" required>
+                </div>
+                <div class="form-group">
+                    <label>Exercise Induced Angina:</label>
+                    <select name="ExerciseAngina">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Oldpeak (ST Depression):</label>
+                    <input type="number" step="0.1" name="Oldpeak" required>
+                </div>
+                <div class="form-group">
+                    <label>ST Slope:</label>
+                    <select name="ST_Slope">
+                        <option value="0">Down</option>
+                        <option value="1">Flat</option>
+                        <option value="2">Up</option>
+                    </select>
+                </div>
+                <button type="submit">Predict</button>
+            </div>
         </form>
 
         {% if prediction_text %}
