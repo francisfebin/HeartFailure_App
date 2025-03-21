@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Failure Predictor</title>
     <style>
-        /* Import Futuristic Font for Heading */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Raleway:wght@300;400;600&display=swap');
 
-        /* Red-Green Gradient Background */
         body {
             font-family: 'Raleway', sans-serif;
             background: linear-gradient(135deg, #8B0000, #228B22);
@@ -17,9 +15,9 @@
             justify-content: center;
             align-items: center;
             margin: 0;
+            overflow: hidden;
         }
 
-        /* Container */
         .container {
             width: 90%;
             max-width: 400px;
@@ -28,14 +26,15 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
-            height: 90vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            overflow: auto; /* Prevents content overflow */
+            flex-wrap: wrap;
+            height: auto;
+            max-height: 90vh;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
-        /* Logo */
         .logo-container {
             display: flex;
             justify-content: center;
@@ -53,7 +52,6 @@
             100% { transform: scale(1); }
         }
 
-        /* Heading */
         h1 {
             font-family: 'Orbitron', sans-serif;
             color: #8B0000;
@@ -71,9 +69,9 @@
 
         label {
             font-weight: bold;
+            text-align: left;
             font-size: 14px;
             display: block;
-            margin-top: 10px;
         }
 
         input, select {
@@ -85,11 +83,7 @@
             font-size: 13px;
             background-color: #f2f2f2;
             text-align: center;
-        }
-
-        select {
-            appearance: none;
-            text-align-last: center;
+            box-sizing: border-box;
         }
 
         button {
@@ -109,7 +103,6 @@
             background: #600000;
         }
 
-        /* Animated Prediction */
         .prediction {
             margin-top: 10px;
             font-size: 15px;
@@ -131,14 +124,11 @@
             }
         }
 
-        /* Disclaimer */
         .disclaimer {
             font-size: 12px;
             color: #8B0000;
-            margin-top: 10px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 5px;
+            word-wrap: break-word;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -178,7 +168,7 @@
             <label>Cholesterol:</label>
             <input type="number" name="Cholesterol" required>
 
-            <label>Fasting Blood Sugar (FastingBS):</label>
+            <label>Fasting Blood Sugar:</label>
             <select name="FastingBS">
                 <option value="0">Less than 120 mg/dl</option>
                 <option value="1">Greater than 120 mg/dl</option>
