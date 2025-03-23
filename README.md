@@ -9,6 +9,8 @@
 This project uses **Random Forest Classifier** to predict heart failure risk. The app is deployed on **Render** and accessible at:  
 🔗 [Heart Failure Predictor](https://heart-failure-predictor-wrnv.onrender.com)
 
+**Dataset Source**: [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+
 ### 🔮 Future Plans
 I plan to implement more models like **Logistic Regression** and **Neural Networks** to improve accuracy and performance.
 
